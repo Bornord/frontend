@@ -6,5 +6,5 @@ export default {
 </script>
 
 <template>
-	<a :href="url">{{ text }}</a>
+	<div>Item: {{ $route.params.name }}</div>
 </template>

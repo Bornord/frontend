@@ -1,27 +1,14 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logoN7En.jpeg"><br/>
-    <!-- 
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    -->
-    <HomeLink url = "/" text = "Accueil"/><br/>
-    <HomeLink url = "/about" text = "About"/><br/>
-    <HomeLink url = "/price" text = "Price"/><br/>
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> | 
+      <router-link to="/price">Price</router-link> |
+      <router-link to="/item">ItemSuprise</router-link>
+    </nav>
+    <router-view/>
   </div>
 </template>
-
-<script>
-// import HelloWorld from './components/HelloWorld.vue'
-
-import HomeLink from './components/HomeLink.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HomeLink,  
-    }
-}
-</script>
 
 <style lang="scss">
 #app {
@@ -30,6 +17,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
