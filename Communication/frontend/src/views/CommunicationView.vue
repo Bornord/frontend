@@ -28,6 +28,7 @@ export default {
         .then(response => {
           console.log("all's fine");
           console.log(response);
+          // cela demande de bien comprendre la structure de données du backend
           this.greetings = response.data.msg
         })
         .catch(e => {
