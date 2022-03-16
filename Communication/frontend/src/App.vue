@@ -5,9 +5,20 @@
       <router-link to="/about">About</router-link>
     </nav>
     <router-view/>
-
+    Test dynamique: {{msg}}
   </div>
 </template>
+
+<script>
+  //import HelloWorld from "./components/HelloWorld.vue";
+  export default {
+	name: 'App',
+  data: () => ({
+    msg: "HelloWorld",
+  }),
+}
+
+</script>
 
 <style lang="scss">
 #app {

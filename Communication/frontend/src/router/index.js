@@ -6,6 +6,7 @@ import CommunicationVue from '../views/CommunicationView.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  
   /*
   {
     path: '/',

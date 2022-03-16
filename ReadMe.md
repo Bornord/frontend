@@ -22,6 +22,10 @@ Lancer vue :
 <br/>
    => lancer le serveur frontend : npm run serve
 <br/>
+<br/>
+Importer le framework de requête http
+<br/>
+npm install store-js
 
 
 ## Memento
@@ -46,4 +50,8 @@ Routage statique et routage dynamique, sur le principe c'est pareil.
 <br/>
 Ce qui change, c'est que l'on peut afficher des éléments de l'URL dans le contenu HTMLs
 
-### 
+### Backend
+
+<br/> Penser à installer express 
+<br/>npm install express
+<br/> nodemon <nomDuServeur>
