@@ -30,6 +30,10 @@ Lancer vue :
 
 2 choses : Le routage =/= url de base
 <br/>
+UPDATE : VRAI, SI on a refusé le history mode lors de la configuration du router. 
+<br/>
+Si on a config avec ce mode, c'est pareil :-)
+<br/>
 <br/>
 Routage : aiguillage DANS l'app PAR l'app
 <br/>
