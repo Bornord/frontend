@@ -1,10 +1,10 @@
 <template>
   <div>
      <ul class="list">
-         <li v-for = "personne in listeP" :key = "personne.info">
-            {{ personne.info.prenom}} {{ personne.info.nom }}
-            <ul>
-                <li v-for = "adresse in personne.info.adresses" :key = "adresse.a">
+         <li v-for = "personne in listeP" :key = "personne.name">
+            {{ personne.prenom}} {{ personne.nom }}
+            <ul v-for = "adresse in personne.adresse" :key = "adresse.a">
+                <li v-if = "adresse.a !== ''">
                     {{adresse.a}}
                 </li>
             </ul>
@@ -14,49 +14,34 @@
 </template>
 
 <script>
-//import {HTTP} from '../services/api';
+import {HTTP} from '../services/api';
 
 export default {
-    name: 'AjoutPersonne',
+    name: 'AffichageVue',
     data () {
         return {
         message: '',
-        listeP: [
-            {info: {
-                prenom: "Alexandre",
-                nom: "Charles",
-                adresses: [
-                    {a: "rue de la paix",},
-                    {a: "rue de la défense"},
-                ],
-            }},
-            {info: {
-                prenom: "Alexandre",
-                nom: "Thomas",
-                adresses: {}
-            }}
-        ],
+        listeP: [],
         errors: '',
         }
     }, 
-    methods: {
-    }
-        /*
+    created () {
+        this.getListeP();
+    },
+        methods: {
         getListeP () {
         HTTP.get('/api/listeP')
             .then(response => {
-            // cela demande de bien comprendre la structure de données du backend
-            this.message = response.data.msg
+                const fichier = JSON.parse(response.data);
+                fichier.forEach(/* Fichiers json */ element => {
+                    this.listeP.push(element);
+                });
             })
             .catch(e => {
             this.errors = e
             })
         }
     },
-    beforeCreate () {
-        this.getListeP ();
-    },
-    */
 }
 </script>
 

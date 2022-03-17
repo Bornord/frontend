@@ -39,7 +39,8 @@ app.use('/api/ajoutPersonne', (req,res,next) => {
 });
 */
 
-app.use('/api/ajoutPersonne',Routes);
+app.use('/api/',Routes);
+
 
 app.use('/greetings', (req,res,next) => {
   console.log("all's fine");

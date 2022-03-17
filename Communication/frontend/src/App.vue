@@ -5,7 +5,7 @@
       <router-link to="/comm">Requête simple</router-link> |
       <router-link to="/ajoutPersonne">Ajout de personne</router-link> | 
       <router-link to="/ajoutAdresse">Ajout d'une adresse</router-link> | 
-      <router-link to="/association">Associer</router-link> |
+      <router-link to="/associer">Associer</router-link> |
       <router-link to="/affichage">Affichage</router-link> 
     </nav>
     <router-view/>

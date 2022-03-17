@@ -8,6 +8,9 @@ const Controller = require('../controllers/controller');
 //const controller = require('../controllers/controller');
 
 // traitement du routage
-Router.post('/', Controller.creerPersonne);
+Router.post('/ajoutPersonne', Controller.creerPersonne);
+Router.get('/listeP', Controller.afficher);
+Router.get('/associer', Controller.associer);
+Router.post('/ajoutAdresse', Controller.creerAdresse);
 
 module.exports= Router;

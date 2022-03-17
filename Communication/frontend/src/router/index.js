@@ -4,7 +4,9 @@ import HomeView from '../views/HomeView.vue'
 import CommunicationVue from '../views/CommunicationView.vue'
 import AjoutPersonneVue from '../views/AjoutPersonneVue.vue'
 import AffichageVue from '../views/AffichageVue.vue'
-//import AjoutAdresseVue from '../views/AjoutAdresse.vue'
+import AjoutAdresseVue from '../views/AjoutAdresseVue.vue'
+import AssocierVue from '../views/AssocierVue.vue'
+
 
 Vue.use(VueRouter)
 
@@ -28,9 +30,19 @@ const routes = [
     component: AjoutPersonneVue,
   },
   {
+    path: '/ajoutAdresse',
+    name: 'ajoutAdresse',
+    component: AjoutAdresseVue,
+  },
+  {
     path: '/affichage',
     name: 'affichage',
     component: AffichageVue,
+  },
+  {
+    path: '/associer',
+    name: 'associer',
+    component: AssocierVue,
   },
   {
     path: '/comm',
