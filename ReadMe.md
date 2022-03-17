@@ -23,9 +23,6 @@ Lancer vue :
    => lancer le serveur frontend : npm run serve
 <br/>
 <br/>
-Importer le framework de requête http
-<br/>
-npm install store-js
 
 
 ## Memento

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-//import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/HomeView.vue'
 import CommunicationVue from '../views/CommunicationView.vue'
 
 Vue.use(VueRouter)
@@ -15,6 +15,11 @@ const routes = [
   },
   */
   {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -25,8 +30,8 @@ const routes = [
     },
   },
   {
-    path: '/',
-    name: 'home',
+    path: '/comm',
+    name: 'Requête',
     component: CommunicationVue
   },
 ]

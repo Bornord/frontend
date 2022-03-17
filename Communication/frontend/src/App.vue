@@ -2,26 +2,27 @@
   <div id="app">
     <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/ajoutPersonne">Ajout de personne</router-link>
-      <router-link to="/ajoutAdresse">Ajout d'une adresse</router-link>
-      <router-link to="/affichage">Affichage</router-link>
-      <router-link to="/association">Associer</router-link>
+      <router-link to="/comm">Requête simple</router-link> |
+      <router-link to="/ajoutPersonne">Ajout de personne</router-link> | 
+      <router-link to="/ajoutAdresse">Ajout d'une adresse</router-link> | 
+      <router-link to="/association">Associer</router-link> |
+      <router-link to="/affichage">Affichage</router-link> 
+
 
     </nav>
     <router-view/>
-    Ceci est la page d':
+    <HomeView/>
   </div>
 </template>
 
 <script>
-  import HomeView from "./components/HomeView.vue";
+import HomeView from "./views/HomeView.vue";
   export default {
-	name: 'App',
-  data: () => ({
-    msg: "HelloWorld",
-    component:
-      HomeView,
-  }),
+    name: "App",
+    data: () => ({
+        msg: "Home",
+        component: HomeView,
+    }),
 }
 
 </script>
