@@ -11,6 +11,9 @@ Le site d'Enguerran BEST, pour apprendre le frontend.
 ajouter un router
    =>  vue add router
 
+ajouter axios :
+   => npm install axios
+
 ### quotidien
 
 Lancer vue : 

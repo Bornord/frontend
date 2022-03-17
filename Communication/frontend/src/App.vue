@@ -7,15 +7,16 @@
       <router-link to="/ajoutAdresse">Ajout d'une adresse</router-link> | 
       <router-link to="/association">Associer</router-link> |
       <router-link to="/affichage">Affichage</router-link> 
-
-
     </nav>
     <router-view/>
+    <!--
     <HomeView/>
+    -->
   </div>
 </template>
 
 <script>
+/*
 import HomeView from "./views/HomeView.vue";
   export default {
     name: "App",
@@ -23,7 +24,9 @@ import HomeView from "./views/HomeView.vue";
         msg: "Home",
         component: HomeView,
     }),
+    components: { HomeView }
 }
+*/
 
 </script>
 

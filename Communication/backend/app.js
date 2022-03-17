@@ -1,6 +1,8 @@
 const express = require('express');
 // database
 const app = express();
+const Routes = require('./routers/router');
+ 
 
 // database
 //const mongoose = require('mongoose');
@@ -16,6 +18,8 @@ mongoose.connect('mongodb+srv://Bornord:Bornord56@cluster0.9i3ay.mongodb.net/myF
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 */
 
+app.use(express.json());
+
 
 /* 
 Déclaration des permissions 
@@ -29,12 +33,19 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
   });
+/*  
+app.use('/api/ajoutPersonne', (req,res,next) => {
+    res.status(201).json({msg: ""});
+});
+*/
 
+app.use('/api/ajoutPersonne',Routes);
 
 app.use('/greetings', (req,res,next) => {
-    console.log("all's fine");
-    res.status(201).json({msg: "hello world back"});
+  console.log("all's fine");
+  res.status(201).json({msg: "hello world back"});
 });
+
 
 // On indique les routes où l'on va écouter
 //app.use('/api/stuff',stuffRoutes);
