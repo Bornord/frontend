@@ -40,8 +40,6 @@ export default {
           nom: nom
       })
         .then(response => {
-          console.log("all's fine");
-          console.log(response);
           // cela demande de bien comprendre la structure de données du backend
           this.message = response.data.msg
         })
