@@ -2,6 +2,20 @@ const express = require('express');
 // database
 const app = express();
 
+// database
+//const mongoose = require('mongoose');
+//const stuffRoutes = require('./router/thingRouter');
+//const userRoutes = require('./router/userRouter');
+
+/*
+// mongoDB init
+mongoose.connect('mongodb+srv://Bornord:Bornord56@cluster0.9i3ay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
+*/
+
 
 /* 
 Déclaration des permissions 
@@ -16,9 +30,20 @@ app.use((req, res, next) => {
     next();
   });
 
+
 app.use('/greetings', (req,res,next) => {
     console.log("all's fine");
     res.status(201).json({msg: "hello world back"});
 });
 
+// On indique les routes où l'on va écouter
+//app.use('/api/stuff',stuffRoutes);
+//app.use('/api/auth',userRoutes);
+
 module.exports = app;
+
+
+
+
+
+

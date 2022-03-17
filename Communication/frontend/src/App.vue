@@ -2,19 +2,25 @@
   <div id="app">
     <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/ajoutPersonne">Ajout de personne</router-link>
+      <router-link to="/ajoutAdresse">Ajout d'une adresse</router-link>
+      <router-link to="/affichage">Affichage</router-link>
+      <router-link to="/association">Associer</router-link>
+
     </nav>
     <router-view/>
-    Test dynamique: {{msg}}
+    Ceci est la page d':
   </div>
 </template>
 
 <script>
-  //import HelloWorld from "./components/HelloWorld.vue";
+  import HomeView from "./components/HomeView.vue";
   export default {
 	name: 'App',
   data: () => ({
     msg: "HelloWorld",
+    component:
+      HomeView,
   }),
 }
 
