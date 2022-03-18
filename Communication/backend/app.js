@@ -2,24 +2,19 @@ const express = require('express');
 // database
 const app = express();
 const Routes = require('./routers/router');
- 
+const mongoose = require('mongoose');
+//const Routes = require('./router/userRouter');
 
-// database
-//const mongoose = require('mongoose');
-//const stuffRoutes = require('./router/thingRouter');
-//const userRoutes = require('./router/userRouter');
 
-/*
 // mongoDB init
 mongoose.connect('mongodb+srv://Bornord:Bornord56@cluster0.9i3ay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
-*/
+
 
 app.use(express.json());
-
 
 /* 
 Déclaration des permissions 
@@ -40,7 +35,6 @@ app.use('/api/ajoutPersonne', (req,res,next) => {
 */
 
 app.use('/api/',Routes);
-
 
 app.use('/greetings', (req,res,next) => {
   console.log("all's fine");

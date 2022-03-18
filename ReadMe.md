@@ -14,6 +14,9 @@ ajouter un router
 ajouter axios :
    => npm install axios
 
+lancer moongoDB : 
+   => npm install mongoose
+
 ### quotidien
 
 Lancer vue : 
@@ -53,5 +56,10 @@ Ce qui change, c'est que l'on peut afficher des éléments de l'URL dans le cont
 ### Backend
 
 <br/> Penser à installer express 
-<br/>npm install express
+<br/> npm install express
 <br/> nodemon <nomDuServeur>
+
+commentaire dans n'imp langage : cmd + shift + /
+tips : interpréter des props réactives ":nomPropre"
+exemple: id="personne.prenom + personne.nom"
+

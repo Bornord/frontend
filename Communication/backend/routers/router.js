@@ -2,15 +2,17 @@ const express = require('express');
 
 // Création d'un routeur que l'on exportera au serveur
 const Router = express.Router();
-const Controller = require('../controllers/controller');
+// Choisir la version statique (solution AdHoc) ou dynamique (MongoDB)
+//const Controller = require('../controllers/controller');
+const Controller = require('../controllers/DBcontroller');
 // import du controleur métier
 //const auth = require('../middleware/auth');
-//const controller = require('../controllers/controller');
 
 // traitement du routage
 Router.post('/ajoutPersonne', Controller.creerPersonne);
 Router.get('/listeP', Controller.afficher);
 Router.get('/associer', Controller.associer);
 Router.post('/ajoutAdresse', Controller.creerAdresse);
+Router.post('/validerChoix', Controller.validerChoix);
 
 module.exports= Router;
