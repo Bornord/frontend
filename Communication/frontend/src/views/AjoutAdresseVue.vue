@@ -11,7 +11,7 @@
       value = "Envoyer"
       @click = "sendPersonne"
     />
-    <h1 v-if = "message!==''" > {{message}} </h1>
+    <p v-if = "message!==''" > {{message}} </p>
   </div>
 </template>
 

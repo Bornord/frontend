@@ -4,11 +4,12 @@
      <ul class="list">
          Listes des personnes existantes:<br/><br/>
          <li v-for = "personne in listeP" :key = "personne.prenom">
-            <input 
+            <input
                 class="text"
                 type="radio"
-                id="1" 
-                name= "radio1" 
+                id="1"
+                :name="1"
+                :value="personne.prenom+' '+personne.nom"
             >
             <label for="1">{{personne.prenom}} {{personne.nom}}</label>
          </li>
@@ -19,7 +20,9 @@
                 <input 
                     type="radio"
                     id="2"
-                    name= "radio2" 
+                    :name="2"
+                    :value="adresse.rue"
+
                 >
                 <label for="2">{{adresse.rue}}</label>
             </li>
@@ -30,6 +33,7 @@
         value = "Envoyer"
         @click = "envoyerAssociation"
     />
+    <p> {{message}} </p>
   </div>
 </template>
 
@@ -57,6 +61,7 @@ export default {
                 const fichierPersonne = response.data.personnes;
                 const fichierP = JSON.parse(fichierPersonne);
                 const fichierA = JSON.parse(fichierAdresse);
+                //console.log(fichierA);
                 fichierP.forEach(/* Fichiers json */ elementP => {
                 this.listeP.push(elementP);
                 });
@@ -70,8 +75,17 @@ export default {
         },
         envoyerAssociation () {
             //const personne = document.getElementById(1).value;
-            console.log(document.getElementById(1));
-        }
+            const choixP = document.querySelector('input[name="1"]:checked').value;
+            const choixA = document.querySelector('input[name="2"]:checked').value;
+            HTTP.post('/api/validerChoix',
+            {personne: choixP, adresse: choixA})   
+                .then(() => {
+                    window.location.reload();
+
+                })
+                .catch(e => {
+                    this.errors = e
+                })}
     },
 }
 </script>

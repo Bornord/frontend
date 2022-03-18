@@ -3,9 +3,9 @@
      <ul class="list">
          <li v-for = "personne in listeP" :key = "personne.name">
             {{ personne.prenom}} {{ personne.nom }}
-            <ul v-for = "adresse in personne.adresse" :key = "adresse.a">
-                <li v-if = "adresse.a !== ''">
-                    {{adresse.a}}
+            <ul v-for = "adresse in personne.adresse" :key = "adresse.rue">
+                <li v-if = "adresse.rue !== ''">
+                    {{adresse}}
                 </li>
             </ul>
          </li>
@@ -33,7 +33,9 @@ export default {
         HTTP.get('/api/listeP')
             .then(response => {
                 const fichier = JSON.parse(response.data);
+                //console.log("dans le frontend");
                 fichier.forEach(/* Fichiers json */ element => {
+                    //console.log(element.adresse);
                     this.listeP.push(element);
                 });
             })
