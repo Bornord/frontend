@@ -17,6 +17,9 @@ ajouter axios :
 lancer moongoDB : 
    => npm install mongoose
 
+lancer Sqlite3 : 
+   => npm install sqlite3
+
 ### quotidien
 
 Lancer vue : 
