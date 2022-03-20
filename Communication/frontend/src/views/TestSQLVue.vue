@@ -92,7 +92,7 @@ export default {
         .catch(e => {this.error = e});
     },
 
-    ajoutP () {
+    /*ajoutP () {
       const prenom = document.getElementById("3").value;
       const nom = document.getElementById("4").value;
       console.log("test");
@@ -105,7 +105,7 @@ export default {
         })
         .catch(err => this.erreur = err);
     },
-
+  */
   effacer () {
     HTTP.post('/api/effacer',{
       msg: "Effacer la base",
