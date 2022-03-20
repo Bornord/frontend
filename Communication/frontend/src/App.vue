@@ -3,6 +3,7 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/comm">Requête simple</router-link> |
+      <router-link to="/testSQL">Test avec SQL</router-link> |
       <router-link to="/ajoutPersonne">Ajout de personne</router-link> | 
       <router-link to="/ajoutAdresse">Ajout d'une adresse</router-link> | 
       <router-link to="/associer">Associer</router-link> |

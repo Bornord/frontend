@@ -1,69 +1,81 @@
-const Personne = require('../models/dynamic/modelePersonne');
-const Adresse = require('../models/dynamic/modeleAdresse');
+const sqlite3 = require("sqlite3").verbose();
+// chemin absolu depuis le serveur backend lancé avec nodemon
+const db = new sqlite3.Database("./databases/personnes.db",sqlite3.OPEN_READWRITE, (err) => {
+    if (err) {
+        return console.error(err.message)
+    } else {
+        console.log("La connection avec la base de données a été établie");
+    }
+});
 
-let lp = [];
-let la = [];
+//erreur si décommente car la table existe déjà
+db.run('CREATE TABLE IF NOT EXISTS personnes(prenom, nom, id)');
+// effacer la table
+//db.run('DROP TABLE personnes');
 
-// traitement des requêtes internes
-exports.creerPersonne = (req,res,next) => {
-    lp.push(new Personne(req.body.prenom,req.body.nom));
-    res.status(201).json({msg: "le contact " + req.body.prenom + " " + req.body.nom + " a été créé avec succès"});
-};
+/*
+const sql = 'INSERT INTO personnes(prenom, nom, id) VALUES(?,?,?)';
+db.run(sql,['Enguerran','BEST','2'], err => {
+    if (err) {
+        return console.error(err.message);
+    } else {
+        console.log("A new row has been creadted")
+    }
+});
+*/
+
+
+exports.testSQL = (req,res,next) => {
+    res.status(200).json({resp: "le message '" + req.body.message+ "' a été reçu et traité"});
+}
 
 exports.afficher = (req,res,next) => {
-    //console.log(JSON.stringify(lp));
-    const fichier = JSON.stringify(lp);
-    res.status(200).json(fichier);
-};
-
-exports.associer = (req,res,next) => {
-    //console.log(JSON.stringify(lp));
-    const fichierPersonne = JSON.stringify(lp);
-    const fichierAdresse = JSON.stringify(la);
-    res.status(200).json({personnes: fichierPersonne,adresses: fichierAdresse});
-};
-
-exports.creerAdresse = (req,res,next) => {
-    la.push(new Adresse(req.body.adresse));
-    //console.log(la[1].rue);
-    res.status(201).json({msg: "l'adresse " + req.body.adresse + " a été créé avec succès"});
-};
-
-exports.validerChoix = (req,res,next) => {
-    //console.log("début");
-    //console.log(lp);
-    const choixP= req.body.personne.split(' ');
-    if ( choixP.length==2) {
-        let resultat = true;
-        const prenom = choixP[0];
-        const nom =choixP[1];
-        const choixA = req.body.adresse;
-        lp.forEach( elementP => {
-            //console.log("dans le forEach");
-            //console.log(elementP.prenom == choixP[0]);
-            if (prenom == elementP.prenom && nom == elementP.nom) {
-                elementP.adresse.push(choixA);
-                for (let i = 0; i < la.length; i++) {
-                    if (la[i].rue == choixA) {
-                        la.splice(i,1);
-                    }
-                }
-                //console.log("dans le if");
-                //console.log(la);
-                //console.log(lp);
-                if (resultat) {
-                    res.status(200).json({msg: "L'association a été réalisé avec succès."});
-                }
-                resultat = false;
-            } else {
-                console.log("Un passage");
-            }
+        db.serialize(function () {
+          db.all('SELECT * FROM personnes', function (err,row) {
+            res.json(row);
+          });
         });
-        if (resultat) {
-            res.status(500).json({error: "le nom n'existe pas"});
-        }
-    } else {
-        res.status(500).json({error: "longueur chelou"});
-    }
-
+          /*
+    let run =[];
+    const sql = 'SELECT * from personnes';
+    db.serialize(function () {
+        db.all(sql,[],(err,rows) =>{
+        if (err) {
+            return console.error(err.message);
+        } else {
+            rows.forEach(row => {
+                db.push(row);
+            });
+            console.log(db)
+        }})
+        res.json({resp: "ok"})
+    });
+    */
 }
+
+
+
+
+/*
+const sql = 'INSERT INTO personnes(prenom, nom, id) VALUES(?,?,?)';
+db.run(sql,['Enguerran','BEST','0'], err => {
+    if (err) {
+        return console.error(err.message);
+    } else {
+        console.log("A new row has been creadted")
+    }
+});
+
+const sql = 'SELECT * from personnes';
+db.all(sql,[],(err,rows) =>{
+    if (err) {
+        return console.error(err.message);
+    } else {
+        rows.forEach(row => {
+            console.log(row);
+        })
+    }
+})
+
+*/
+

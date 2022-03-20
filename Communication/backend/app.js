@@ -2,17 +2,18 @@ const express = require('express');
 // database
 const app = express();
 const Routes = require('./routers/router');
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 //const Routes = require('./router/userRouter');
 
 
 // mongoDB init
+/*
 mongoose.connect('mongodb+srv://Bornord:Bornord56@cluster0.9i3ay.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
-
+*/
 
 app.use(express.json());
 

@@ -6,6 +6,7 @@ import AjoutPersonneVue from '../views/AjoutPersonneVue.vue'
 import AffichageVue from '../views/AffichageVue.vue'
 import AjoutAdresseVue from '../views/AjoutAdresseVue.vue'
 import AssocierVue from '../views/AssocierVue.vue'
+import TestSQLVue from '../views/TestSQLVue.vue'
 
 
 Vue.use(VueRouter)
@@ -23,6 +24,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/testSQL',
+    name: 'testSQL',
+    component: TestSQLVue,
   },
   {
     path: '/ajoutPersonne',
