@@ -20,6 +20,9 @@ Router.post('/validerChoix', Controller.validerChoix);
 // test avec DB
 Router.post('/testSQL',DBController.testSQL);
 Router.get('/afficher',DBController.afficher);
+Router.post('/ajoutP',DBController.ajoutP);
+Router.post('/effacer',DBController.effacer);
+
 
 
 module.exports= Router;

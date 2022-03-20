@@ -66,3 +66,7 @@ commentaire dans n'imp langage : cmd + shift + /
 tips : interpréter des props réactives ":nomPropre"
 exemple: id="personne.prenom + personne.nom"
 
+### SQL
+Le chemin à l'air d'être absolu  
+(depuis le fichier lancé avec Nodemon et non le fichier qui exploite la DB)
+const db = new sqlite3.Database("./databases/personnes.db",sqlite3.OPEN_READWRITE, (err) => {

@@ -8,6 +8,8 @@ const db = new sqlite3.Database("./databases/personnes.db",sqlite3.OPEN_READWRIT
     }
 });
 
+let id = 0;
+
 //erreur si décommente car la table existe déjà
 db.run('CREATE TABLE IF NOT EXISTS personnes(prenom, nom, id)');
 // effacer la table
@@ -30,6 +32,7 @@ exports.testSQL = (req,res,next) => {
 }
 
 exports.afficher = (req,res,next) => {
+        db.run('CREATE TABLE IF NOT EXISTS personnes(prenom, nom, id)');
         db.serialize(function () {
           db.all('SELECT * FROM personnes', function (err,row) {
             res.json(row);
@@ -51,9 +54,27 @@ exports.afficher = (req,res,next) => {
         res.json({resp: "ok"})
     });
     */
+};
+
+exports.ajoutP = (req,res,next) => {
+    db.run('CREATE TABLE IF NOT EXISTS personnes(prenom, nom, id)');
+    const sql = 'INSERT INTO personnes(prenom, nom, id) VALUES(?,?,?)';
+    id +=1;
+    db.run(sql,[req.body.prenom,req.body.nom,id], err => { 
+        if (err) {
+            return console.error(err.message);
+        } else {
+            console.log("A new row has been creadted")
+        }
+        res.status(201).json({msg: "L'ajout a bien été effectué"});
+    });
 }
 
-
+exports.effacer = (req,res,next) => {
+    db.run('CREATE TABLE IF NOT EXISTS personnes(prenom, nom, id)');
+    db.run('DROP TABLE personnes');
+    res.status(200).json({msg: "La base a été effacée."})
+}
 
 
 /*
