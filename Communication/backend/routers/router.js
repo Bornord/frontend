@@ -6,9 +6,10 @@ const Router = express.Router();
 const Controller = require('../controllers/Controller');
 //const DBcontroller = require('../controllers/DBexample');
 const DBController = require('../controllers/DBcontroller');
+const UserController = require('../controllers/UserController');
 
 // import du controleur d'identification
-//const auth = require('../middleware/auth');
+const auth = require('../middlewares/auth');
 
 // traitement du routage
 Router.post('/ajoutPersonne', Controller.creerPersonne);
@@ -17,12 +18,14 @@ Router.get('/associer', Controller.associer);
 Router.post('/ajoutAdresse', Controller.creerAdresse);
 Router.post('/validerChoix', Controller.validerChoix);
 
+// Procédure d'authenfication
+Router.post('signup', UserController.signup)
+Router.post('login',UserController.login);
+
 // test avec DB
-Router.post('/testSQL',DBController.testSQL);
-Router.get('/afficher',DBController.afficher);
-Router.post('/ajoutP',DBController.ajoutP);
-Router.post('/effacer',DBController.effacer);
-
-
+Router.post('/testSQL', auth, DBController.testSQL);
+Router.get('/afficher', auth, DBController.afficher);
+Router.post('/ajoutP', auth, DBController.ajoutP);
+Router.post('/effacer', auth, DBController.effacer);
 
 module.exports= Router;

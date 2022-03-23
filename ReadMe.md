@@ -20,6 +20,11 @@ lancer moongoDB :
 lancer Sqlite3 : 
    => npm install sqlite3
 
+lancer le package de cryptage de mot de passe bcrypt : 
+   => npm install bcrypt
+
+lancer le package de générateur de token web jsonwebtoken : 
+   => npm install jsonwebtoken
 ### quotidien
 
 Lancer vue : 
