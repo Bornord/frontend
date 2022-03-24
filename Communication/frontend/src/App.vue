@@ -1,25 +1,21 @@
 <template>
-  <div id="app" class="wrapper">
-
-
-    <nav>
-      <div>
-        Test
-      </div>
-      <div>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/comm">Requête simple</router-link> |
-      <router-link to="/testSQL">Test avec SQL</router-link> |
-      <router-link to="/ajoutPersonne">Ajout de personne</router-link> | 
-      <router-link to="/ajoutAdresse">Ajout d'une adresse</router-link> | 
-      <router-link to="/associer">Associer</router-link> |
-      <router-link to="/affichage">Affichage</router-link>
-      </div> 
-    </nav>
+  <div id="app">
+    <div class="page"></div>
+      Test
+      <nav>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/comm">Requête simple</router-link> |
+        <router-link to="/testSQL">Test avec SQL</router-link> |
+        <router-link to="/ajoutPersonne">Ajout de personne</router-link> | 
+        <router-link to="/ajoutAdresse">Ajout d'une adresse</router-link> | 
+        <router-link to="/associer">Associer</router-link> |
+        <router-link to="/affichage">Affichage</router-link>
+      </nav>
     <router-view/>
     <!--
     <HomeView/>
     -->
+    </div>
   </div>
 </template>
 
@@ -61,18 +57,10 @@ nav {
   }
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.page {
+  background-color: red;
 }
-.one {
-  grid-column: 1;
-  grid-row: 1;
-}
-.two {
-  grid-column: 1;
-  grid-row: 1;
-}
+
 
 </style>
 
