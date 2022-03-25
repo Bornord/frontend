@@ -19,7 +19,7 @@ export default {
 
 <style scoped lang="scss">
   .home{
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+    padding: 30px;
   }
 </style>

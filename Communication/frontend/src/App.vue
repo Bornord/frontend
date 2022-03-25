@@ -22,7 +22,7 @@
           </router-link>   
       </div>
       <div class="signup">
-          <router-link to="/login" >
+          <router-link to="/signup" >
             <button role="link">S'inscrire</button>
           </router-link>        
       </div>
@@ -59,7 +59,7 @@ import EspaceClient from "./components/EspaceClient.vue";
   background-color: red;
   display: grid;
   width: 100%;  height: 1000px;
-  grid-template-rows: 100px 10fr 10fr 100px;
+  grid-template-rows: 100px 10fr 10fr 10px 10px;
   grid-template-columns: 2fr 4fr 2fr 2fr;
   .link { color: white; } /* CSS link color */
   .link:hover { color: red; } /* CSS link color */
@@ -70,14 +70,14 @@ import EspaceClient from "./components/EspaceClient.vue";
   padding: 30px;
   background-color: black;
   color: white;
-  grid-column: 1 / 3;
+  grid-column: 1 / 4;
   grid-row-start: 1;
 }
 
 .login {
   padding: 30px;
   background-color: blue;
-  grid-column-start: 3;
+  grid-column-start: 4;
   grid-row-start: 1;
   text-align: right;
 }
@@ -85,7 +85,7 @@ import EspaceClient from "./components/EspaceClient.vue";
 .signup {
   padding: 30px;
   background-color: blue;
-  grid-column-start: 4;
+  grid-column-start: 5;
   grid-row-start: 1;
   text-align: left;
 
@@ -93,7 +93,7 @@ import EspaceClient from "./components/EspaceClient.vue";
 
 #page > main {
   background-color: #ffff64;
-  grid-column: 2 / 5;
+  grid-column: 2 / 6;
   grid-row: 2 / 4;
   padding: 30px ;
 }
@@ -101,7 +101,7 @@ import EspaceClient from "./components/EspaceClient.vue";
 #page > footer {
   background-color: red;
   color: white;
-  grid-column: 1 / 5;
+  grid-column: 1 / 6;
   grid-row-start: 4;
   padding: 30px;
 }

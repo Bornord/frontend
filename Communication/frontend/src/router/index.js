@@ -7,7 +7,6 @@ import AffichageVue from '../views/AffichageVue.vue'
 import AjoutAdresseVue from '../views/AjoutAdresseVue.vue'
 import AssocierVue from '../views/AssocierVue.vue'
 import TestSQLVue from '../views/TestSQLVue.vue'
-import TestAffichageVue from '../views/TestAffichageVue.vue'
 import LoginVue from '../views/LoginVue.vue'
 import SignupVue from '../views/SignupVue.vue'
 
@@ -27,11 +26,6 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
-  },
-  {
-    path: '/test-affichage',
-    name: 'test affichage',
-    component: TestAffichageVue
   },
   {
     path: '/testSQL',
