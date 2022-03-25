@@ -15,3 +15,11 @@ export default {
   }
 }
 </script>
+
+
+<style scoped lang="scss">
+  .home{
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

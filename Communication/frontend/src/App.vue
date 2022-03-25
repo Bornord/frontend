@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <div class="page"></div>
-      Test
-      <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/comm">Requête simple</router-link> |
-        <router-link to="/testSQL">Test avec SQL</router-link> |
-        <router-link to="/ajoutPersonne">Ajout de personne</router-link> | 
-        <router-link to="/ajoutAdresse">Ajout d'une adresse</router-link> | 
-        <router-link to="/associer">Associer</router-link> |
-        <router-link to="/affichage">Affichage</router-link>
-      </nav>
-    <router-view/>
+    <div id="page">
+      <main>
+        <router-view/>
+      </main>
+      <div class="side">
+        Ceci est la colonne latérale
+      </div>
+      <div class="nav1">
+          <router-link class = link to="/">Home</router-link> |
+          <router-link class = link to="/comm">Requête simple</router-link> |
+          <router-link class = link to="/testSQL">Test avec SQL</router-link> |
+          <router-link class = link to="/ajoutPersonne">Ajout de personne</router-link> | 
+          <router-link class = link to="/ajoutAdresse">Ajout d'une adresse</router-link> | 
+          <router-link class = link to="/associer">Associer</router-link> |
+          <router-link class = link to="/affichage">Affichage</router-link>
+      </div>
+      <div class="nav2">
+        Test helmlo
+      </div>
+      <footer>
+        Ceci est le pied de page
+      </footer>
     <!--
     <HomeView/>
     -->
@@ -34,32 +44,58 @@ import HomeView from "./views/HomeView.vue";
 
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style scoped lang="scss">
 
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-
-.page {
+#page {
   background-color: red;
+  display: grid;
+  width: 100%;  height: 1000px;
+  grid-template-rows: 100px 10fr 10fr 100px;
+  grid-template-columns: 2fr 4fr 2fr 2fr;
+  .link { color: white; } /* CSS link color */
+  .link:hover { color: red; } /* CSS link color */
+  // grid-area: main;
 }
+
+.nav1 {
+  padding: 30px;
+  background-color: black;
+  color: white;
+  grid-column: 1 / 4;
+  grid-row-start: 1;
+}
+
+.nav2 {
+  padding: 30px;
+  background-color: blue;
+  grid-column: 4 / 5;
+  text-align: right;
+  grid-row-start: 1;
+}
+
+#page > main {
+  background-color: #ffff64;
+  grid-column: 2 / 5;
+  grid-row: 2 / 4;
+  padding: 30px ;
+}
+
+#page > footer {
+  background-color: red;
+  color: white;
+  grid-column: 1 / 5;
+  grid-row-start: 4;
+  padding: 30px;
+}
+
+#page > .side {
+  background-color: green;
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+  padding: 30px;
+}
+
+
 
 
 </style>
