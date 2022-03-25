@@ -1,6 +1,6 @@
 <template>
     <section>
-        Hello {{this.message.prenom}} {{this.message.nom}}
+         
     </section>
 </template>
 

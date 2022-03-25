@@ -16,8 +16,15 @@
           <router-link class = link to="/associer">Associer</router-link> |
           <router-link class = link to="/affichage">Affichage</router-link>
       </div>
-      <div class="nav2">
-        <EspaceClient/>
+      <div class = "login">
+          <router-link to="/login" >
+            <button role="link">S'identifier</button>
+          </router-link>   
+      </div>
+      <div class="signup">
+          <router-link to="/login" >
+            <button role="link">S'inscrire</button>
+          </router-link>        
       </div>
       <footer>
         Ceci est le pied de page
@@ -31,6 +38,7 @@
 
 <script>
 
+/*
 import EspaceClient from "./components/EspaceClient.vue";
   export default {
     name: "App",
@@ -40,6 +48,7 @@ import EspaceClient from "./components/EspaceClient.vue";
     }),
     components: { EspaceClient }
 }
+*/
 
 
 </script>
@@ -61,16 +70,25 @@ import EspaceClient from "./components/EspaceClient.vue";
   padding: 30px;
   background-color: black;
   color: white;
-  grid-column: 1 / 4;
+  grid-column: 1 / 3;
   grid-row-start: 1;
 }
 
-.nav2 {
+.login {
   padding: 30px;
   background-color: blue;
-  grid-column: 4 / 5;
-  text-align: right;
+  grid-column-start: 3;
   grid-row-start: 1;
+  text-align: right;
+}
+
+.signup {
+  padding: 30px;
+  background-color: blue;
+  grid-column-start: 4;
+  grid-row-start: 1;
+  text-align: left;
+
 }
 
 #page > main {
@@ -94,8 +112,6 @@ import EspaceClient from "./components/EspaceClient.vue";
   grid-row: 2 / 4;
   padding: 30px;
 }
-
-
 
 
 </style>

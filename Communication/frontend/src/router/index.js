@@ -8,6 +8,8 @@ import AjoutAdresseVue from '../views/AjoutAdresseVue.vue'
 import AssocierVue from '../views/AssocierVue.vue'
 import TestSQLVue from '../views/TestSQLVue.vue'
 import TestAffichageVue from '../views/TestAffichageVue.vue'
+import LoginVue from '../views/LoginVue.vue'
+import SignupVue from '../views/SignupVue.vue'
 
 
 Vue.use(VueRouter)
@@ -60,6 +62,16 @@ const routes = [
     path: '/comm',
     name: 'Requête',
     component: CommunicationVue
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginVue
+  },
+  {
+    path: '/signup',
+    name: 'singup',
+    component: SignupVue
   },
 ]
 
