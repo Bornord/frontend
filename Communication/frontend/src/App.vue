@@ -17,7 +17,7 @@
           <router-link class = link to="/affichage">Affichage</router-link>
       </div>
       <div class="nav2">
-        Test helmlo
+        <EspaceClient/>
       </div>
       <footer>
         Ceci est le pied de page
@@ -30,17 +30,17 @@
 </template>
 
 <script>
-/*
-import HomeView from "./views/HomeView.vue";
+
+import EspaceClient from "./components/EspaceClient.vue";
   export default {
     name: "App",
     data: () => ({
-        msg: "Home",
-        component: HomeView,
+        msg: "",
+        component: EspaceClient,
     }),
-    components: { HomeView }
+    components: { EspaceClient }
 }
-*/
+
 
 </script>
 
