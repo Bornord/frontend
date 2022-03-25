@@ -80,9 +80,10 @@
             <div class="gauche">
                 <input
                     type="button"
-                    id="9"
-                    :name="9"
-                    value="Valider"
+                    id = "9"
+                    :name = "9"
+                    value = "Valider"
+                    @click = envoyer()
                 >
             </div>
         </div>
@@ -92,6 +93,9 @@
 
 <script>
 // @ is an alias to /src
+
+import {HTTP} from '../services/api'
+
 
 export default {
   name: 'SignupVue',
@@ -135,6 +139,24 @@ export default {
             console.log("Erreur inattendue");
         }
       },
+      envoie() {
+        HTTP.post('/api/signup',{
+            personne: {
+                login: document.getElementById('1'),
+                mail: document.getElementById('2'),
+                password: document.getElementById('3'),
+                password_bis: document.getElementById('4'),
+            }
+        })
+        .then(response => {
+          console.log(response);
+          // cela demande de bien comprendre la structure de données du backend
+          this.personne = response.data.msg
+        })
+        .catch(e => {
+          this.errors = e
+        })
+      }
 
   }
 

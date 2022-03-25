@@ -19,8 +19,8 @@ Router.post('/ajoutAdresse', Controller.creerAdresse);
 Router.post('/validerChoix', Controller.validerChoix);
 
 // Procédure d'authenfication
-Router.post('signup', UserController.signup)
-Router.post('login',UserController.login);
+Router.post('/signup', UserController.signup)
+Router.post('/login', UserController.login);
 
 // test avec DB
 Router.post('/testSQL', auth, DBController.testSQL);

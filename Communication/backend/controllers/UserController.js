@@ -23,7 +23,7 @@ exports.signup = (req, res, next) => {
         // 
         exports.ajoutA = (req,res,next) => {
             db.run('CREATE TABLE IF NOT EXISTS admins(prenom, nom, id)');
-            const sql = 'INSERT INTO admins(prenom, nom, id) VALUES(?,?,?)';
+            const sql = 'INSERT INTO admins(prenom, nom, login, mail, id) VALUES(?,?,?)';
             id +=1;
             db.run(sql,[req.body.prenom,req.body.nom,id], err => { 
                 if (err) {
