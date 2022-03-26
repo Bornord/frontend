@@ -100,7 +100,11 @@
                     value="afficher"
                 > -->
             </div>
-            <div></div>
+            <!-- Message d'erreur -->
+                
+            <div class="messageErreur" v-if = "erreurs !=''"> 
+                {{erreurs}}
+            </div>
             <div class="gauche">
                 <input
                     type="button"
@@ -138,6 +142,8 @@ export default {
   },
   methods: {
       visualisation(i) {
+        this.erreurs = '';
+        this.essage = '';
         var element;
         var image;
         if (i===1) {
@@ -164,25 +170,38 @@ export default {
         }
       },
       envoyer() {
-        console.log("debut login: ");
-        console.log(document.getElementById('1').value);
-        HTTP.post('/api/signup',{
-            personne: {
-                login: document.getElementById('1').value,
-                mail: document.getElementById('2').value,
-                password: document.getElementById('3').value,
-                prenom: document.getElementById('10').value,
-                nom: document.getElementById('11').value,
-            }
-        })
-        .then(response => {
-          console.log(response);
-          // cela demande de bien comprendre la structure de données du backend
-          this.personne = response.data.msg
-        })
-        .catch(e => {
-          this.errors = e
-        })
+        this.erreurs = '';
+        this.essage = '';
+        const login = document.getElementById('1').value;
+        const mail = document.getElementById('2').value;
+        const password = document.getElementById('3').value;
+        const password_confirmation = document.getElementById('4').value;
+        const prenom = document.getElementById('10').value;
+        const nom = document.getElementById('11').value;
+        const bool = login ==='' || mail ==='' || mail ==='' || password ==='' || password_confirmation ==='' || prenom ==='' || nom ===''
+        if (password !== password_confirmation) {
+            this.erreurs = "Non correspondance des mdp et de la confirmation."
+            console.log(this.erreurs);
+        } else if (bool) {
+            this.erreurs = "Un champ est manquant !"
+        } else {
+            HTTP.post('/api/signup',{
+                personne: {
+                    login,
+                    mail,
+                    password,
+                    prenom,
+                    nom,
+                }
+            })
+            .then(response => {
+            // cela demande de bien comprendre la structure de données du backend
+            this.personne = response.data.msg
+            })
+            .catch(() => {
+                this.erreurs = "Le pseudo est déjà utilisé";
+            })
+        }
       }
 
   }
@@ -208,5 +227,10 @@ export default {
     padding: 40px 32px 10px 10px
 }
 
+.messageErreur {
+    color: red;
+    font-style: italic;
+    font-size: x-small;
+}
 
 </style>

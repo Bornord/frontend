@@ -24,29 +24,44 @@ exports.signup = (req, res, next) => {
     .then(hash => {
         // 
         db.run('CREATE TABLE IF NOT EXISTS admins(prenom, nom, login, mail, password, id)');
-        const sql = 'INSERT INTO admins(prenom, nom, login, mail, password, id) VALUES(?,?,?,?,?,?)';
-        id +=1;
-        db.run(sql,[req.body.personne.prenom,req.body.personne.nom,req.body.personne.login,req.body.personne.mail,hash,id], err => { 
+        // On cherche si le login est déjà utilisé
+        const sqlExists = 'SELECT * FROM admins WHERE EXISTS (SELECT * FROM admins WHERE login= ?)'
+        db.all(sqlExists,[req.body.personne.login], (err,rows) => {
           if (err) {
+            console.log("pas de chance");
             return console.error(err.message);
           } else {
-            console.log("A new admin has been created")
-                  // affichage
-            const requete = 'SELECT * from admins';
-            db.all(requete,[],(err,rows) => {
-            if (err) {
-                console.log("affichage_erreur");
-                return console.error(err.message);
+            if (rows.length != 0) {
+              res.status(500).json({erreurs: "Pseudo déjà utilisé"})
             } else {
-                console.log("affichage");
-                rows.forEach(row => {
-                  console.log(row);
-                })
+                      // Sinon on peut l'insérer
+        console.log("la requête a marché");
+            const sqlInsert = 'INSERT INTO admins(prenom, nom, login, mail, password, id) VALUES(?,?,?,?,?,?)';
+            id +=1;
+            db.run(sqlInsert,[req.body.personne.prenom,req.body.personne.nom,req.body.personne.login,req.body.personne.mail,hash,id], err => { 
+              if (err) {
+                return console.error(err.message);
+              } else {
+                console.log("A new admin has been created")
+                // affichage
+                const requete = 'SELECT * from admins';
+                db.all(requete,[],(err,rows) => {
+                if (err) {
+                    console.log("affichage_erreur");
+                    return console.error(err.message);
+                } else {
+                    console.log("affichage");
+                    rows.forEach(row => {
+                      console.log(row);
+                    })
+                  }
+                });
+              }
+              res.status(201).json({msg: "L'admin a été ajouté"});
+            });
+                }
               }
             });
-          }
-          res.status(201).json({msg: "L'admin a été ajouté"});
-        });
       })
       .catch(err => res.status(500).json(err));
 };

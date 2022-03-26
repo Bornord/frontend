@@ -8,29 +8,29 @@ Le site d'Enguerran BEST, pour apprendre le frontend.
  => npm install -g @vue/cli
 (one shot)
 
-ajouter un router
+ajouter un router:  
    =>  vue add router
 
-ajouter axios :
+ajouter axios : 
    => npm install axios
 
-lancer moongoDB : 
+lancer moongoDB :  
    => npm install mongoose
 
-lancer Sqlite3 : 
+lancer Sqlite3 :  
    => npm install sqlite3
 
-lancer le package de cryptage de mot de passe bcrypt : 
+lancer le package de cryptage de mot de passe bcrypt :  
    => npm install bcrypt
 
-lancer le package de générateur de token web jsonwebtoken : 
+lancer le package de générateur de token web jsonwebtoken :  
    => npm install jsonwebtoken
+
+Ajouter une application vue :  
+   => créer une application : vue create my-app
 ### quotidien
 
 Lancer vue : 
-<br/>
-
-   => créer une application : vue create my-app
 <br/>
    => aller (cd) dans le dossier qui a été créé.
 <br/>
