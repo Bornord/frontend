@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const jwt = require ('jsonwebtoken');
+//const jwt = require ('jsonwebtoken');
 
 // connection à la base de données
 const sqlite3 = require("sqlite3").verbose();
@@ -8,38 +8,47 @@ const db = new sqlite3.Database("./databases/admins.db",sqlite3.OPEN_READWRITE, 
     if (err) {
         return console.error(err.message)
     } else {
-        console.log("La connection avec la base de données a été établie");
+        console.log("La connection avec la base de données " + "'admins'" + " a été établie");
     }
 });
 
 let id = 0;
 
+// On tej les tables pré-existantes
+db.run('DROP TABLE admins');
 //erreur si décommente car la table existe déjà
-db.run('CREATE TABLE IF NOT EXISTS admins(prenom, nom, id)');
+db.run('CREATE TABLE IF NOT EXISTS admins(prenom, nom, login, mail, password, id)');
 
 exports.signup = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10)
-      .then(hash => {
+  bcrypt.hash(req.body.personne.password, 10)
+    .then(hash => {
         // 
-        exports.ajoutA = (req,res,next) => {
-            db.run('CREATE TABLE IF NOT EXISTS admins(prenom, nom, id)');
-            const sql = 'INSERT INTO admins(prenom, nom, login, mail, id) VALUES(?,?,?)';
-            id +=1;
-            db.run(sql,[req.body.prenom,req.body.nom,id], err => { 
-                if (err) {
-                    return console.error(err.message);
-                } else {
-                    console.log("A new admin has been created")
-                }
-                res.status(201).json({msg: "L'admin a été ajouté"});
+        db.run('CREATE TABLE IF NOT EXISTS admins(prenom, nom, login, mail, password, id)');
+        const sql = 'INSERT INTO admins(prenom, nom, login, mail, password, id) VALUES(?,?,?,?,?,?)';
+        id +=1;
+        db.run(sql,[req.body.personne.prenom,req.body.personne.nom,req.body.personne.login,req.body.personne.mail,hash,id], err => { 
+          if (err) {
+            return console.error(err.message);
+          } else {
+            console.log("A new admin has been created")
+                  // affichage
+            const requete = 'SELECT * from admins';
+            db.all(requete,[],(err,rows) => {
+            if (err) {
+                console.log("affichage_erreur");
+                return console.error(err.message);
+            } else {
+                console.log("affichage");
+                rows.forEach(row => {
+                  console.log(row);
+                })
+              }
             });
-        }
-        /*
-          .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-          .catch(error => res.status(400).json({ error }));
-        */
+          }
+          res.status(201).json({msg: "L'admin a été ajouté"});
+        });
       })
-      .catch(error => res.status(500).json({ error }));
+      .catch(err => res.status(500).json(err));
 };
 
 

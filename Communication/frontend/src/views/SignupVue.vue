@@ -3,6 +3,30 @@
         <br/>
         <div class="wrapper">
             <div>
+                Prénom:
+            </div>
+            <div>
+            <input
+                type="texte"
+                id="10"
+                :name="10"
+                value=""
+            >
+            </div>
+            <div></div>
+            <div>
+                Nom:
+            </div>
+            <div>
+            <input
+                type="texte"
+                id="11"
+                :name="11"
+                value=""
+            >
+            </div>
+            <div></div>
+            <div>
             Identifiant :
             </div>
             <div>
@@ -10,7 +34,7 @@
                 type="text"
                 id="1"
                 :name="1"
-                value="identifiant"
+                value=""
             >
             </div>
             <div></div>
@@ -22,7 +46,7 @@
                 type="text"
                 id="2"
                 :name="2"
-                value="mail"
+                value=""
             >
             </div>
             <div></div>
@@ -34,7 +58,7 @@
                 type="password"
                 id="3"
                 :name="3"
-                value="mot de passe"
+                value=""
             >
             </div>
             <div>
@@ -56,7 +80,7 @@
                 type="password"
                 id="4"
                 :name="4"
-                value="confirmation"
+                value=""
             >
             </div>
             <div>
@@ -139,13 +163,16 @@ export default {
             console.log("Erreur inattendue");
         }
       },
-      envoie() {
+      envoyer() {
+        console.log("debut login: ");
+        console.log(document.getElementById('1').value);
         HTTP.post('/api/signup',{
             personne: {
-                login: document.getElementById('1'),
-                mail: document.getElementById('2'),
-                password: document.getElementById('3'),
-                password_bis: document.getElementById('4'),
+                login: document.getElementById('1').value,
+                mail: document.getElementById('2').value,
+                password: document.getElementById('3').value,
+                prenom: document.getElementById('10').value,
+                nom: document.getElementById('11').value,
             }
         })
         .then(response => {
@@ -169,7 +196,7 @@ export default {
     display: grid;
     width: 100%;  
     height: 100px;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 250px 1fr 4fr;
     text-align: left;
     padding: 10px;
