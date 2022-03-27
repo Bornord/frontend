@@ -16,15 +16,21 @@
           <router-link class = link to="/associer">Associer</router-link> |
           <router-link class = link to="/affichage">Affichage</router-link>
       </div>
-      <div class = "login">
+      <div class = "login" v-if= "$store.state.token==='basicDefaultToken'">
           <router-link to="/login" >
             <button role="link">S'identifier</button>
           </router-link>   
       </div>
-      <div class="signup">
+      <div class="signup" v-if= "$store.state.token==='basicDefaultToken'">
           <router-link to="/signup" >
             <button role="link">S'inscrire</button>
           </router-link>        
+      </div>
+      <div v-if= "$store.state.token!=='basicDefaultToken'">
+        <p> {{$store.state.prenom}} {{$store.state.nom}}</p>
+      </div>
+      <div v-if= "$store.state.token!=='basicDefaultToken'">
+        <p> TEST 2</p>
       </div>
       <footer>
         Ceci est le pied de page

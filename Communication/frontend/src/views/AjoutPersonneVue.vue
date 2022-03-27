@@ -37,7 +37,8 @@ export default {
       const nom = document.getElementById(2).value;
       HTTP.post('/api/ajoutPersonne', {
           prenom: prenom,
-          nom: nom
+          nom: nom,
+          token: this.$store.state.token,
       })
         .then(response => {
           // cela demande de bien comprendre la structure de données du backend

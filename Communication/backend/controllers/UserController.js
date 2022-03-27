@@ -83,6 +83,8 @@ exports.login = (req, res, next) => {
               } else {
                 res.status(200).json({ 
                   userId: row.id,
+                  prenom: row.prenom,
+                  nom: row.nom,
                   // sing (la chose à encoder, la clé, config pour appliquer une expiration)
                   token: jwt.sign(
                     { userId: row.id },

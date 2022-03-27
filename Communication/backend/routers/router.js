@@ -12,11 +12,11 @@ const UserController = require('../controllers/UserController');
 const auth = require('../middlewares/auth');
 
 // traitement du routage
-Router.post('/ajoutPersonne', Controller.creerPersonne);
-Router.get('/listeP', Controller.afficher);
-Router.get('/associer', Controller.associer);
-Router.post('/ajoutAdresse', Controller.creerAdresse);
-Router.post('/validerChoix', Controller.validerChoix);
+Router.post('/ajoutPersonne', auth, Controller.creerPersonne);
+Router.get('/listeP', auth, Controller.afficher);
+Router.get('/associer', auth, Controller.associer);
+Router.post('/ajoutAdresse', auth, Controller.creerAdresse);
+Router.post('/validerChoix', auth, Controller.validerChoix);
 
 // Procédure d'authenfication
 Router.post('/signup', UserController.signup)

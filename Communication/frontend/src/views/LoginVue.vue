@@ -82,7 +82,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 </template>
 
@@ -90,6 +89,7 @@
 // @ is an alias to /src
 
 import {HTTP} from '../services/api'
+import { mapGetters } from 'vuex'
 
 
 export default {
@@ -106,6 +106,9 @@ export default {
             success: 'false',
           }
       }
+  },
+  computed: {
+    ...mapGetters(['extractedToken'])
   },
   methods: {
       visualisation(i) {
@@ -157,7 +160,9 @@ export default {
             })
             .then(response => {
             // cela demande de bien comprendre la structure de données du backend
-            this.personne = response.data.msg
+            this.$store.dispatch('MAJ_TOKEN',response.data.token);
+            this.$store.dispatch('MAJ_PRENOM',response.data.prenom);
+            this.$store.dispatch('MAJ_NOM',response.data.nom);
             })
             .catch(() => {
                 this.erreurs = "Vous n'êtes pas encore inscrits.";
