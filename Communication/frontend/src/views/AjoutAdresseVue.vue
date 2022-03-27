@@ -30,7 +30,9 @@ export default {
     sendPersonne () {
       const adresse = document.getElementById(1).value;
       HTTP.post('/api/ajoutAdresse', {
-          adresse: adresse
+          adresse: adresse,
+          token: this.$store.state.token, 
+
       })
         .then(response => {
           // cela demande de bien comprendre la structure de données du backend

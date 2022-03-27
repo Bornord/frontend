@@ -55,7 +55,9 @@ export default {
     },
         methods: {
         getListeP () {
-        HTTP.get('/api/associer')
+        HTTP.post('/api/associer',{
+            token: this.$store.state.token, 
+        })
             .then(response => {
                 const fichierAdresse = response.data.adresses;
                 const fichierPersonne = response.data.personnes;
@@ -77,11 +79,14 @@ export default {
             //const personne = document.getElementById(1).value;
             const choixP = document.querySelector('input[name="1"]:checked').value;
             const choixA = document.querySelector('input[name="2"]:checked').value;
-            HTTP.post('/api/validerChoix',
-            {personne: choixP, adresse: choixA})   
+            HTTP.post('/api/validerChoix',{
+            personne: choixP, 
+            adresse: choixA,
+            token: this.$store.state.token, 
+            })   
                 .then(() => {
+                    // TODO : refresh : erreur. ça empêche l'identification du token
                     window.location.reload();
-
                 })
                 .catch(e => {
                     this.errors = e

@@ -30,7 +30,9 @@ export default {
     },
         methods: {
         getListeP () {
-        HTTP.get('/api/listeP')
+        HTTP.post('/api/listeP',{
+            token: this.$store.state.token, 
+        })
             .then(response => {
                 const fichier = JSON.parse(response.data);
                 //console.log("dans le frontend");

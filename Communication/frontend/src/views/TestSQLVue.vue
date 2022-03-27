@@ -80,7 +80,9 @@ export default {
     },
     afficher () {
       this.listP = [];
-      HTTP.get('/api/afficher')
+      HTTP.post('/api/afficher',{
+        token: this.$store.state.token, 
+      })
         .then( response => {
           const fichierP = response.data;
           console.log(fichierP);
@@ -109,6 +111,8 @@ export default {
   effacer () {
     HTTP.post('/api/effacer',{
       msg: "Effacer la base",
+      token: this.$store.state.token, 
+
     })
       .then( resultat => {
         this.message = resultat.data.msg;

@@ -13,8 +13,8 @@ const auth = require('../middlewares/auth');
 
 // traitement du routage
 Router.post('/ajoutPersonne', auth, Controller.creerPersonne);
-Router.get('/listeP', auth, Controller.afficher);
-Router.get('/associer', auth, Controller.associer);
+Router.post('/listeP', auth, Controller.afficher);
+Router.post('/associer', auth, Controller.associer);
 Router.post('/ajoutAdresse', auth, Controller.creerAdresse);
 Router.post('/validerChoix', auth, Controller.validerChoix);
 
@@ -24,7 +24,7 @@ Router.post('/login', UserController.login);
 
 // test avec DB
 Router.post('/testSQL', auth, DBController.testSQL);
-Router.get('/afficher', auth, DBController.afficher);
+Router.post('/afficher', auth, DBController.afficher);
 Router.post('/ajoutP', auth, DBController.ajoutP);
 Router.post('/effacer', auth, DBController.effacer);
 
