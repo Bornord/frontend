@@ -28,6 +28,9 @@ lancer le package de générateur de token web jsonwebtoken :
 
 Ajouter une application vue :  
    => créer une application : vue create my-app
+
+Ajouter un data store : 
+   => vue add vuex
 ### quotidien
 
 Lancer vue : 
