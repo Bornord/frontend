@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-//const jwt = require ('jsonwebtoken');
+const jwt = require ('jsonwebtoken');
 
 // connection à la base de données
 const sqlite3 = require("sqlite3").verbose();
@@ -15,7 +15,7 @@ const db = new sqlite3.Database("./databases/admins.db",sqlite3.OPEN_READWRITE, 
 let id = 0;
 
 // On tej les tables pré-existantes
-db.run('DROP TABLE admins');
+//db.run('DROP TABLE admins');
 //erreur si décommente car la table existe déjà
 db.run('CREATE TABLE IF NOT EXISTS admins(prenom, nom, login, mail, password, id)');
 
@@ -25,17 +25,15 @@ exports.signup = (req, res, next) => {
         // 
         db.run('CREATE TABLE IF NOT EXISTS admins(prenom, nom, login, mail, password, id)');
         // On cherche si le login est déjà utilisé
-        const sqlExists = 'SELECT * FROM admins WHERE EXISTS (SELECT * FROM admins WHERE login= ?)'
+        const sqlExists = 'SELECT * FROM admins WHERE login= ?'
         db.all(sqlExists,[req.body.personne.login], (err,rows) => {
           if (err) {
-            console.log("pas de chance");
             return console.error(err.message);
           } else {
             if (rows.length != 0) {
               res.status(500).json({erreurs: "Pseudo déjà utilisé"})
             } else {
                       // Sinon on peut l'insérer
-        console.log("la requête a marché");
             const sqlInsert = 'INSERT INTO admins(prenom, nom, login, mail, password, id) VALUES(?,?,?,?,?,?)';
             id +=1;
             db.run(sqlInsert,[req.body.personne.prenom,req.body.personne.nom,req.body.personne.login,req.body.personne.mail,hash,id], err => { 
@@ -68,6 +66,39 @@ exports.signup = (req, res, next) => {
 
 
 exports.login = (req, res, next) => {
+  db.run('CREATE TABLE IF NOT EXISTS admins(prenom, nom, login, mail, password, id)');
+  // On cherche si le login est déjà utilisé
+  const sqlExists = 'SELECT * FROM admins WHERE (login= ?)'
+  db.all(sqlExists,[req.body.personne.login], (err,rows) => {
+    if (err) {
+      return console.error(err.message);
+    } else {
+      if (rows.length === 1) {
+        rows.forEach(row => {
+          // on compare les mots de passe
+          bcrypt.compare(req.body.personne.password, row.password)
+            .then(valide => {
+              if (!valide) {
+                res.status(401).json({ error: 'Mot de passe incorrect !' });
+              } else {
+                res.status(200).json({ 
+                  userId: row.id,
+                  // sing (la chose à encoder, la clé, config pour appliquer une expiration)
+                  token: jwt.sign(
+                    { userId: row.id },
+                    'RANDOM_TOKEN_SECRET',
+                    { expiresIn: '24h' })
+                });
+              }
+            })
+            .catch(err => res.status(500).json({message: err.message}));
+        })
+      } else if (rows.length === 0) {
+        res.status(500).json({erreurs: "Ce login n'existe pas."})
+                // Sinon on peut l'insérer
+      } else {
+        res.status(500).json({erreurs: "Plusieurs logins de ce nom existent, gros pb..."})
+      }
     /*
     User.findOne({ email: req.body.email })
       .then(user => {
@@ -93,5 +124,7 @@ exports.login = (req, res, next) => {
       })
       .catch(error => res.status(500).json({ error }));
       */
+      }
+    })
   };
   

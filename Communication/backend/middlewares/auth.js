@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     req.auth = {userId};
     // OU
     // req.auth = {userId};
-    if (req.body.userId && req.body.userId != userId) {
+    if (req.body.id && req.body.userId != userId) {
       throw 'Invalid user ID';
     } else {
       next();

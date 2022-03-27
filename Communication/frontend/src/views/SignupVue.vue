@@ -100,12 +100,14 @@
                     value="afficher"
                 > -->
             </div>
-            <!-- Message d'erreur -->
-                
-            <div class="messageErreur" v-if = "erreurs !=''"> 
-                {{erreurs}}
+            <!-- Message d'erreur -->   
+            <div class="messageErreur"> 
+                <p v-if = "erreurs !=''">{{erreurs}}</p>
             </div>
-            <div class="gauche">
+            <div></div>
+            <div></div>            
+            <div >
+                <div>
                 <input
                     type="button"
                     id = "9"
@@ -113,6 +115,7 @@
                     value = "Valider"
                     @click = envoyer()
                 >
+                </div>
             </div>
         </div>
 
@@ -215,7 +218,7 @@ export default {
     display: grid;
     width: 100%;  
     height: 100px;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 250px 1fr 4fr;
     text-align: left;
     padding: 10px;
