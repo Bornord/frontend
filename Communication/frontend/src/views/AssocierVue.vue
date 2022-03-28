@@ -86,7 +86,12 @@ export default {
             })   
                 .then(() => {
                     // TODO : refresh : erreur. ça empêche l'identification du token
-                    window.location.reload();
+                    //window.location.reload();
+
+                    // Pour éviter le refresh, on met à jour la liste dans le dataSet. 
+                    const indice = this.listeA.indexOf(choixA);
+                    this.listeA.splice(indice, 1);
+
                 })
                 .catch(e => {
                     this.errors = e
