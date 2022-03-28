@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex)
 
@@ -30,18 +31,27 @@ export default new Vuex.Store({
     MAJ_nom(state, payload) {
       state.nom = payload;
     },
+    DELETE_token(state) {
+      state.token = 'basicDefaultToken';
+      state.prenom = '';
+      state.nom = '';
+    }
   },
   actions: {
     MAJ_TOKEN (context,payload) {
-      context.commit('MAJ_token', payload)
+      context.commit('MAJ_token', payload);
     },
     MAJ_PRENOM (context,payload) {
-      context.commit('MAJ_prenom', payload)
+      context.commit('MAJ_prenom', payload);
     },
     MAJ_NOM (context,payload) {
-      context.commit('MAJ_nom', payload)
+      context.commit('MAJ_nom', payload);
+    },
+    DELETE_TOKEN (context) {
+      context.commit('DELETE_token');
     }
   },
   modules: {
-  }
+  },
+  plugins: [createPersistedState()],
 })

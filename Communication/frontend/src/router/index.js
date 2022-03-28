@@ -9,6 +9,7 @@ import AssocierVue from '../views/AssocierVue.vue'
 import TestSQLVue from '../views/TestSQLVue.vue'
 import LoginVue from '../views/LoginVue.vue'
 import SignupVue from '../views/SignupVue.vue'
+import DeconnexionVue from '../views/DeconnexionVue.vue'
 
 
 Vue.use(VueRouter)
@@ -51,6 +52,11 @@ const routes = [
     path: '/associer',
     name: 'associer',
     component: AssocierVue,
+  },
+  {
+    path: '/deconnexion',
+    name: 'deconnexion',
+    component: DeconnexionVue,
   },
   {
     path: '/comm',

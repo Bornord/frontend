@@ -27,10 +27,17 @@
           </router-link>        
       </div>
       <div v-if= "$store.state.token!=='basicDefaultToken'">
-        <p> {{$store.state.prenom}} {{$store.state.nom}}</p>
+        <p> {{$store.state.prenom}}</p>
       </div>
       <div v-if= "$store.state.token!=='basicDefaultToken'">
-        <p> TEST 2</p>
+        <p>{{$store.state.nom}}</p>
+      </div>
+      <div class = "deconnexion">
+        <div v-if= "$store.state.token!=='basicDefaultToken'">
+          <router-link to="/deconnexion" >
+            <button role="link">Se déconnecter</button>
+          </router-link>   
+        </div>
       </div>
       <footer>
         Ceci est le pied de page
@@ -65,8 +72,8 @@ import EspaceClient from "./components/EspaceClient.vue";
   background-color: red;
   display: grid;
   width: 100%;  height: 1000px;
-  grid-template-rows: 100px 10fr 10fr 10px 10px;
-  grid-template-columns: 2fr 4fr 2fr 2fr;
+  grid-template-rows: 50px 50px 10fr 10fr 100px;
+  grid-template-columns: 2fr 4fr 2fr 2fr 2fr;
   .link { color: white; } /* CSS link color */
   .link:hover { color: red; } /* CSS link color */
   // grid-area: main;
@@ -77,7 +84,7 @@ import EspaceClient from "./components/EspaceClient.vue";
   background-color: black;
   color: white;
   grid-column: 1 / 4;
-  grid-row-start: 1;
+  grid-row: 1 / 3;
 }
 
 .login {
@@ -97,25 +104,33 @@ import EspaceClient from "./components/EspaceClient.vue";
 
 }
 
+.deconnexion {
+  padding: 20px;
+  background-color: rgb(0, 183, 255);
+  grid-column: 4 / 6;
+  grid-row-start: 2;
+  text-align: center;
+}
+
 #page > main {
   background-color: #ffff64;
   grid-column: 2 / 6;
-  grid-row: 2 / 4;
+  grid-row: 3 / 6;
   padding: 30px ;
 }
 
 #page > footer {
-  background-color: red;
+  background-color: blue;
   color: white;
   grid-column: 1 / 6;
-  grid-row-start: 4;
+  grid-row-start: 5;
   padding: 30px;
 }
 
 #page > .side {
   background-color: green;
   grid-column: 1 / 2;
-  grid-row: 2 / 4;
+  grid-row: 3 / 5;
   padding: 30px;
 }
 
