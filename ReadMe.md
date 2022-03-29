@@ -32,9 +32,12 @@ Ajouter une application vue :
 Ajouter un data store : 
    => vue add vuex
 
-Ajouter une persitance des données via des cookies : 
+Ajouter une persitance des données via stockage global : 
    => npm install --save vuex-persistedstate
-   => npm install js-cookie
+
+Ajout du module de cookie : 
+   => npm install vue-cookies
+
 ### quotidien
 
 Lancer vue : 
