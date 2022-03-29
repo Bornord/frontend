@@ -40,14 +40,17 @@ Ajout du module de cookie :
 
 ### quotidien
 
-Lancer vue : 
-<br/>
-   => aller (cd) dans le dossier qui a été créé.
-<br/>
-   => lancer le serveur frontend : npm run serve
-<br/>
-<br/>
+Lancer le service web : 
 
+Terminal 1 (lancer le frontend) : 
+> cd $HOME/githubPath/Communication/frontend
+   => lancer le serveur vuejs : 
+> npm run serve
+
+Terminal 2 (lancer le backend) : 
+> cd $HOME/githubPath/Communication/backend
+ => lancer le serveur node :
+> nodemon Server
 
 ## Memento
 
