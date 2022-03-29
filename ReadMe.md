@@ -43,14 +43,14 @@ Ajout du module de cookie :
 Lancer le service web : 
 
 Terminal 1 (lancer le frontend) : 
-> cd $HOME/githubPath/Communication/frontend
-   => lancer le serveur vuejs : 
-> npm run serve
+> cd $HOME/githubPath/Communication/frontend  
+ => lancer le serveur vuejs :   
+> npm run serve  
 
 Terminal 2 (lancer le backend) : 
-> cd $HOME/githubPath/Communication/backend
- => lancer le serveur node :
-> nodemon Server
+> cd $HOME/githubPath/Communication/backend  
+ => lancer le serveur node :  
+> nodemon Server  
 
 ## Memento
 
