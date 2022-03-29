@@ -14,7 +14,9 @@
           <router-link class = link to="/ajoutPersonne">Ajout de personne</router-link> | 
           <router-link class = link to="/ajoutAdresse">Ajout d'une adresse</router-link> | 
           <router-link class = link to="/associer">Associer</router-link> |
-          <router-link class = link to="/affichage">Affichage</router-link>
+          <router-link class = link to="/affichage">Affichage</router-link> |
+          <router-link class = link to="/CookieStepVue">Créer un cookie</router-link>
+
       </div>
       <div class = "login" v-if= "$store.state.token==='basicDefaultToken'">
           <router-link to="/login" >

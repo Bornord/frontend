@@ -10,6 +10,8 @@ import TestSQLVue from '../views/TestSQLVue.vue'
 import LoginVue from '../views/LoginVue.vue'
 import SignupVue from '../views/SignupVue.vue'
 import DeconnexionVue from '../views/DeconnexionVue.vue'
+import CookieSetupVue from '../views/CookieSetupVue.vue'
+
 
 
 Vue.use(VueRouter)
@@ -32,6 +34,11 @@ const routes = [
     path: '/testSQL',
     name: 'testSQL',
     component: TestSQLVue,
+  },
+  {
+    path: '/CookieStepVue',
+    name: 'cookieSetup',
+    component: CookieSetupVue,
   },
   {
     path: '/ajoutPersonne',
